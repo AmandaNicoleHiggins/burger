@@ -1,0 +1,43 @@
+<div class="container">
+
+
+  {{!-- TITLE DIV --}}
+  <div class="row" id="title">
+    <h1 class="display-1 mx-auto">Order Up!</h1>
+  </div>
+
+  {{!-- Ready for delivery (orders go here after submitted) --}}
+  <div class="row">
+    <div class="col" id="orderUp">
+      <h2>Order is ready</h2>
+
+      <ul>
+        {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block devoured=true}} {{/unless}} {{/each}}
+      </ul>
+    </div>
+
+    {{!-- Delivered (orders go here after the user clicks the "deliver" button) --}}
+    <div class="col" id="eatenBurgers">
+      <h2>Delivered!</h2>
+
+      <ul>
+        {{#each burgers}} {{#if devoured}} {{> burgers/burger-block devoured=false}} {{/if}} {{/each}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row newOrder">
+    <div class="col" id="newOrder">
+      <h2>New Order...</h2>
+      <form class="addBurger">
+
+        <div class="form-group">
+          <label for="addNewBurgerName">What's for dinner?</label><br>
+          <input type="text" id="addNewBurgerName">
+        </div>
+        <button type="submit" class="btn btn-sm submitBtn">Add Order</button>
+
+      </form>
+    </div>
+  </div>
+</div>
