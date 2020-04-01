@@ -1,7 +1,7 @@
 // Require express
 var express = require("express");
 // Require express
-var express = require("express");
+var router = express.Router();
 // Import the burger model 
 var burger = require("../models/burger.js");
 
@@ -22,11 +22,13 @@ router.get("/", function(req, res) {
 // post 
 
 router.post("/api/burgers", function(req,res) {
+    console.log(req.body);
     burger.create([
         "burgerName", "devoured"
     ], [
         req.body.name, req.body.devoured
     ], function(result) {
+        console.log(result);
         res.json({ id: result.insertId });
     });
    });
